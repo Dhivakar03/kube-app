@@ -24,7 +24,7 @@ spec:
          - name: MYSQL_ROOT_PASSWORD
            valueFrom:
              secretKeyRef:
-               name: app-secret
+               name: mysecret
                key: db-pass
 #        env:
 #         - name: MYSQL_ROOT_PASSWORD
