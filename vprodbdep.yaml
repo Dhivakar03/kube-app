@@ -17,6 +17,11 @@ spec:
       containers:
       - name: vprodb
         image: imranvisualpath/8pmdbimg:v1
+        args:
+          - "--ignore-db-dir=lost+found"
+      volumeMounts:
+        - mountPath: /var/libmysql
+          name: vprodb-db-data
         ports:
         - name: vprodb-port
           containerPort: 3306
