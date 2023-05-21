@@ -20,7 +20,7 @@ spec:
         args:
           - "--ignore-db-dir=lost+found"
       volumeMounts:
-        - mountPath: /var/libmysql
+        - mountPath: /var/lib/mysql
           name: vprodb-db-data
         ports:
         - name: vprodb-port
@@ -31,6 +31,13 @@ spec:
              secretKeyRef:
                name: mysecret
                key: db-pass
+    nodeSelector:
+      zone: us-east-1a
+    volumes:
+      - name: vprodb-db-data
+        awsElasticBlockStore:
+          volumeID: vol-04a4a31d095f30654
+          fsType: ext4
 #        env:
 #         - name: MYSQL_ROOT_PASSWORD
 #           value: "vprodbpass"
